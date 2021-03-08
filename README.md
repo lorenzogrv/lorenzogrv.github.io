@@ -90,4 +90,15 @@ git commit -m "Minimal structure"
 
 ## Configurando el sitio *.github.com
 
-Tengo que comprobar si la configuración de jekyll "traga" con un `index.html` en la raíz para no rallarme, y sino buscar un ejemplo en `yml` y configurar el CI/CD
+Por lo que investigué rápidamente sobre [Github Pages](https://pages.github.com/) la configuración por defecto de jekyll "traga" con un `index.html` en la raíz.
+
+Para no rallarme a buscar un ejemplo de configuración `yml` por el momento para el setup de CI/CD, muevo los ficheros a la raíz.
+
+```shell
+mv public/* .
+rm -r public
+git add .
+git commit -m "Move everything to root"
+```
+
+Ahora ya se puede ver lo feo que es el sitio en https://lorenzogrv.github.io
