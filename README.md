@@ -42,12 +42,12 @@ git push -u origin master
 
 
 
-## Configurando el sitio *.github.io
+## Usando el sitio *.github.io
 
 La [documentación explica todo paso a paso](https://docs.github.com/es/github/working-with-github-pages/creating-a-github-pages-site):
 
 1. Crear un repositorio cuyo nombre sea el `<root_namespace>.github.io`.
-2. En la [configuración del repositorio](https://github.com/lorenzogrv/lorenzogrv.github.io/settings), se puede elegir el branch deseado. [Guía aquí](https://docs.github.com/es/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source). Al crear un repositorio *.github.io parece que se activa por defecto. De momento lo que se ve es el contenido de este `README.md` de la raíz se vea
+2. En la [configuración del repositorio](https://github.com/lorenzogrv/lorenzogrv.github.io/settings), se puede elegir el branch deseado. [Guía aquí](https://docs.github.com/es/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source). Al crear un repositorio `*.github.io` parece que se activa por defecto. De momento lo que se ve es el contenido de este `README.md` reconvertido a HTML por el sistema que emplean por defecto (Jekyll).
 
 
 
@@ -86,3 +86,8 @@ git add README.md
 git commit -m "Minimal structure"
 ```
 
+
+
+## Configurando el sitio *.github.com
+
+Tengo que comprobar si la configuración de jekyll "traga" con un `index.html` en la raíz para no rallarme, y sino buscar un ejemplo en `yml` y configurar el CI/CD
