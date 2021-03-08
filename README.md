@@ -35,6 +35,7 @@ git init
 touch README.md
 git add README.md
 git commit -m "Let's go"
+# Por comodidad empleo el acceso vía ssh y ssh-agent
 git remote add origin git@github.com:lorenzogrv/lorenzogrv.github.io.git
 git push -u origin master
 ```
@@ -46,3 +47,42 @@ git push -u origin master
 La [documentación explica todo paso a paso](https://docs.github.com/es/github/working-with-github-pages/creating-a-github-pages-site):
 
 1. Crear un repositorio cuyo nombre sea el `<root_namespace>.github.io`.
+2. En la [configuración del repositorio](https://github.com/lorenzogrv/lorenzogrv.github.io/settings), se puede elegir el branch deseado. [Guía aquí](https://docs.github.com/es/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source). Al crear un repositorio *.github.io parece que se activa por defecto. De momento lo que se ve es el contenido de este `README.md` de la raíz se vea
+
+
+
+## Estructura de directorios
+
+Para mantenerlo ordenado, usaré como raíz un directorio `public/` contenido en la raíz del repositorio.
+
+```shell
+mkdir -p public/{css,img}
+touch public/index.html
+touch public/css/styles.css
+```
+
+En este caso y como se trata de una práctica, escribiré el html y css "a pelo", partiendo de ficheros vacíos
+
+### Power user tip
+
+Voy a descargar el thumbnail de mi gravatar personal empleando `wget` y `jq`
+
+```shell
+# esto llama a la API de gravatar e imprime el JSON en plan "pretty"
+wget --no-verbose -O - http://es.gravatar.com/laconbass.json 2>/dev/null | jq
+# esto descarga la imagen directamente
+wget "$(
+  wget --no-verbose -O - http://es.gravatar.com/laconbass.json 2>/dev/null \
+  | jq --raw-output '.entry[0].thumbnailUrl'
+)" -O public/img/laconbass.thumb
+```
+
+Realizo unas ediciones mínimas, y subo los ficheros
+
+```shell
+vim public/index.html public/css/styles.css
+git add public
+git add README.md
+git commit -m "Minimal structure"
+```
+
