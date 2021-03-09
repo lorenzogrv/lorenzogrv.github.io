@@ -2,8 +2,6 @@
 
 Arranco este proyecto como uno de los retos prácticos del bootcamp de frontend
 
-
-
 [[_TOC_]]
 
 ## Intro
@@ -65,7 +63,9 @@ En este caso y como se trata de una práctica, escribiré el html y css "a pelo"
 
 ### Power user tip
 
-Voy a descargar el thumbnail de mi gravatar personal empleando `wget` y `jq`
+Voy a descargar el thumbnail de mi gravatar personal empleando `wget` y `jq`.
+
+> No sé si voy a usar el thumbnail, pero me apetecía hacer alguna frikeada con el [`jq`](https://stedolan.github.io/jq/), y si alguien lee esto y no lo conoce que le heche un ojo. Es alucinantemente rápido, aunque este ejemplo no sirva para demostrarlo. Pruébalo para trabajar sobre cientos o miles de ficheros `json` y verás.
 
 ```shell
 # esto llama a la API de gravatar e imprime el JSON en plan "pretty"
@@ -102,3 +102,19 @@ git commit -m "Move everything to root"
 ```
 
 Ahora ya se puede ver lo feo que es el sitio en https://lorenzogrv.github.io
+
+
+
+## Dándole unos toques _à la_ single page
+
+Dado que se trata de hacerlo "a pelo" _from scratch_, empiezo a darle unos toques totalmente a mano. Para ello uso mi amado `vim` y [`budo --dir . --live`](https://github.com/mattdesl/budo) (`npm i -g budo`).
+
+Usaré alguna foto de [picsum](https://picsum.photos ) para hacer backgrounds y darle un poco de feel. También voy a cargarme el layout cutre que monté a base de `absolute`, antes de que alguien aterrice y lo vea XD.
+
+> Despues de un rato...
+
+Sigue siendo feo pero ahora tiene un toque. Aproveché para probar (ya era hora) el `scroll snap`. De momento toqué los enlaces para navegar vía hash a los `id`, ya veré luego.
+
+Tiene un mínimo de _responsivity_, pero tengo que decidir aún como voy a ubicar los elementos en los distintos _breakpoints_. Aún no introducí `@media` queries, quiero darle una vuelta al contenido html primero.
+
+El _look&feel_ es una mierda aún, tengo que decidir la paleta. De momento dejé los backgrounds en grayscale.

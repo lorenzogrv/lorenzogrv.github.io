@@ -13,23 +13,43 @@
       <h1>github.lorenzogrv.tech</h1>
       <h2>Yet another website made from scratch</h2>
       <nav>
-        <a href="/">Home</a>
-        <a href="/">About me</a>
-        <a href="/">Contact me</a>
+        <a href="#home">Home</a>
+        <a href="#about">About me</a>
+        <a href="#contact">Contact me</a>
       </nav>
     </header>
 
     <main>
-      <section>
-        <h1>Section one</h1>
+      <section id="home">
+        <h1>Hi world! I'm Lorenzo</h1>
+        <p>This is a dumb site i'm making for a bootcamp</p>
       </section>
 
-      <section>
-        <h1>Section two</h1>
+      <section id="about">
+        <h1>About me</h1>
+        <figure>
+          <img src="./img/laconbass.thumb" />
+        </figure>
+        <p>I'm from Galicia, Spain.</p>
+        <p>Since 9 years old, I started programming.</p>
+        <p>Mi passions have been always computers and music.</p>
+        <p>I play drums, and electric bass.</p>
+        <p>I've worked as lighting and sound technician.</p>
       </section>
 
-      <section>
-        <h1>Section three</h1>
+      <section id="contact">
+        <h1>Contact</h1>
+        <p>I will drop here a contact form, but it won't work ;)</p>
+        <form action="#">
+          <p>
+            <label for="contact-form--email">Your email</label>
+            <input id="contact-form--email" name="email" />
+          </p>
+          <p>
+            <label for="contact-form--message">Message</label>
+            <textarea id="contact-form--message"></textarea>
+          </p>
+        </form>
       </section>
     </main>
 

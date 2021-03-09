@@ -1,33 +1,145 @@
+/**
+ * Basic resets
+ */
 html, body { margin: 0; }
+
+/**
+ * Layout
+ */
+
+header, footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+header {
+  top: 0;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-around;
+}
+header nav a {
+  padding: 1em;
+  width: 4em;
+  height: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #0001;
+}
+
+footer {
+  border-top: 1px dashed #ffffffaa;
+  padding-top: .7em;
+  bottom: 1em;
+}
+
+main {
+  width: 100vw;
+}
+
+main > section {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 1em;
+  padding-bottom: 4em;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+}
+
+main > section :first-child {
+  margin-top: 0;
+}
+main > section :last-child {
+  margin-bottom: 0;
+}
+
+form > p {
+  display: flex;
+  align-items: center;
+}
+form > p > label {
+  content-size: max-content;
+  flex-basis: 5em;
+}
+form > p > :not(label) {
+  flex-grow: 1;
+  background-color: transparent;
+  border: 1px solid var(--color);
+  color: var(--color);
+}
+form textarea {
+  resize: vertical;
+}
+
+/**
+ * Backgrounds
+ */
+
+main > section {
+  background-size: cover;
+  background-position: center center;
+  background-image: var(--bg-image, "");
+}
+#home {
+  --bg-image: url("https://picsum.photos/id/1019/5472/3648?grayscale");
+}
+#about {
+  --bg-image: url("https://picsum.photos/id/1028/5184/3456?grayscale");
+}
+#contact {
+  --bg-image: url("https://picsum.photos/id/1042/3456/5184?grayscale");
+}
+
+/**
+ * Scroll snap technique experiment
+ * @see https://css-tricks.com/practical-css-scroll-snapping/
+ */
+main {
+  max-height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+main > section {
+  scroll-snap-align: start;
+}
+
+/**
+ * Text
+ */
 
 body {
   font-family: monospace;
   text-align: center;
+  color: cornsilk;
+  --color: cornsilk;
+  /**
+   * @see https://css-tricks.com/methods-contrasting-text-backgrounds/
+   */
+  mix-blend-mode: difference;
 }
 
 header {
-  position: fixed;
-  top: 0;
+  font-size: .69em;
 }
-
-main {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 0; right: 0;
-  margin: auto;
-  width: 50vw;
-  height: 50vh;
+header h2 {
+  font-weight: lighter;
+}
+header nav a,
+header nav a:visited {
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: bolder;
+  color: floralwhite;
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-}
-
-header, footer {
-  left: 0;
-  right: 0;
-  margin: 2em auto;
+  font-size: .8em;
 }
 
 /* vim: set expandtab: */
