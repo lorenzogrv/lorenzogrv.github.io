@@ -204,6 +204,7 @@ main > section > article {
 main > section > article > h2 {
   color: transparent;
   background: inherit;
+  -webkit-background-clip: text;
   background-clip: text;
   filter: invert(1);
 }
