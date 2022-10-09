@@ -274,6 +274,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+      - run: cp dist/index.html dist/404.html
       - uses: actions/configure-pages@v2
       - uses: actions/upload-pages-artifact@v1.0.4
         with:
@@ -281,3 +282,16 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v1.2.1
 ```
+
+El truco funcionó, pero no mantiene el path en la URL. Tendré que darle una
+vuelta en otra ocasión para que cargue la sección que toca, pero por el momento
+me sirve
+
+### TODOs
+
+- [ ] Fix acceso directo via URL (404)
+- [ ] Rework del menú (Necesitaré más elementos)
+- [ ] Portfolio (Molaría algo en plan galería)
+- [ ] Tech Skills (Molaría algo en plan ficha de personaje)
+- [ ] i18n
+- [ ] Tema capacitación
