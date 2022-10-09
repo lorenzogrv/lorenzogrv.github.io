@@ -230,6 +230,11 @@ de cómo funciona actions, pude crear un workflow que realiza la acción deseada
 > recomendaba gh en la configuración de pages para ver una plantilla con un
 > ejemplo funcional.
 
+Una vez funcionando, compruebo que me devuelve un 404 si voy directo a una url
+que no sea la raíz. En la [doc de github](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site)
+explican que se puede usar un `404.html` customizado. Probaré ahora con el truco
+clásico de duplicar el `index.html`
+
 Después de limpiar todo lo innecesario, el resultado es:
 
 ```yaml
