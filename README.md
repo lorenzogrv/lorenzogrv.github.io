@@ -222,3 +222,57 @@ corregir los 404.
 En [esta guía](https://docs.github.com/es/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 como proceder. En la propia guía no hay ejemplos de código, por lo que voy a
 investigar un poco y probar siguiendo mi intuición...
+
+Después de un poco de prueba-error por tema de permisos y desconocimiento total
+de cómo funciona actions, pude crear un workflow que realiza la acción deseada.
+
+> La manera de encontrar una buena guía fué usar uno de los workflows que me
+> recomendaba gh en la configuración de pages para ver una plantilla con un
+> ejemplo funcional.
+
+Después de limpiar todo lo innecesario, el resultado es:
+
+```yaml
+---
+# https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["master"]
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  pages-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v2
+      - uses: actions/upload-pages-artifact@v1.0.4
+        with:
+          path: dist/  # Path of the directory containing the static assets.
+      - id: deployment
+        uses: actions/deploy-pages@v1.2.1
+```

@@ -1,7 +1,7 @@
 ---
 # https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
@@ -28,31 +28,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16.x
           cache: 'npm'
       - run: npm ci
-      - run: npm run build --if-present
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v2
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v1.0.4
+      - run: npm run build
+      - uses: actions/configure-pages@v2
+      - uses: actions/upload-pages-artifact@v1.0.4
         with:
-          # Path of the directory containing the static assets.
-          path: dist/
-      - name: Deploy GitHub Pages site
-        id: deployment
+          path: dist/  # Path of the directory containing the static assets.
+      - id: deployment
         uses: actions/deploy-pages@v1.2.1
-        with:
-          # GitHub token
-          token: ${{ github.token }}
-          # Time (milliseconds) after which to timeout and cancel the deployment
-          # timeout: # optional, default is 600000 (10 minutes)
-          # Maximum number of report errors before cancelling a deployment
-          # error_count: # optional, default is 10
-          # Time in milliseconds between two deployment status report
-          # reporting_interval: # optional, default is 5000 (5 seconds)
-          # Name of the artifact to deploy
-          # artifact_name: # optional, default is github-pages
