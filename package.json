@@ -1,0 +1,33 @@
+{
+  "name": "lorenzogrv.tech",
+  "private": true,
+  "version": "0.0.0",
+  "description": "@lorenzogrv brand web",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorenzogrv/lorenzogrv.github.io.git"
+  },
+  "keywords": [
+    "lorenzogrv",
+    "web",
+    "porfolio",
+    "brand"
+  ],
+  "author": "Lorenzo García Rivera <lorenzogrv@gmail.com>",
+  "license": "SEE LICENSE IN README.md",
+  "bugs": {
+    "url": "https://github.com/lorenzogrv/lorenzogrv.github.io/issues"
+  },
+  "homepage": "https://github.com/lorenzogrv/lorenzogrv.github.io#readme",
+  "devDependencies": {
+    "vite": "^3.1.6"
+  }
+}

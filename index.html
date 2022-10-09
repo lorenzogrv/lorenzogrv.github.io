@@ -2,59 +2,109 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/img/Yin_yang.svg" />
     <meta name="viewport" content="width=device-width, initial-scale:1.0" />
 
-    <title>Lolo's github.io site</title>
+    <title>lorenzogrv.tech</title>
 
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
-  <body>
+  <body class="home">
     <header>
-      <h1>github.lorenzogrv.tech</h1>
-      <h2>Yet another website made from scratch</h2>
+      <h1>
+        lorenzogrv.tech
+        <small>Yet another web made from scratch</small>
+      </h1>
       <nav>
-        <a href="#home">Home</a>
+        <a href="#home" class="selected">Home</a>
         <a href="#about">About me</a>
-        <a href="#contact">Contact me</a>
+        <a href="#more">More</a>
       </nav>
     </header>
 
     <main>
       <section id="home">
-        <h1>Hi world! I'm Lorenzo</h1>
-        <p>This is a dumb site i'm making for a bootcamp</p>
+        <article>
+          <h2>Hi world! I'm Lorenzo</h2>
+          <p>
+            This is a dumb site I made for a bootcamp time ago.
+          </p>
+          <p>
+            I'm updating it to be my personal brand web.
+          </p>
+          <p>
+            It's still a
+            <a
+              href="https://github.com/lorenzogrv/lorenzogrv.github.io"
+              target="_blank"
+              rel="noopener"
+            >work-in-progress</a>.
+          </p>
+        </article>
       </section>
 
       <section id="about">
-        <h1>About me</h1>
-        <figure>
-          <img src="./img/laconbass.thumb" />
-        </figure>
-        <p>I'm from Galicia, Spain.</p>
-        <p>Since 9 years old, I started programming.</p>
-        <p>Mi passions have been always computers and music.</p>
-        <p>I play drums, and electric bass.</p>
-        <p>I've worked as lighting and sound technician.</p>
+        <article>
+          <h2>About me</h2>
+          <p>I'm from Galicia, Spain.</p>
+          <p>Since 9 years old, I started programming.</p>
+          <p>My passions have been always computers and music.</p>
+          <p>
+            I play drums and electric bass, I'm member of two amateur bands.
+          </p>
+          <p>
+            I've worked as lighting and sound technician during years.
+            Nowadays I'm full-time on IT, leading a full-stack devops team.
+          </p>
+          <p>
+            I like to be creative and learn things, being an enthusiast autodidact.
+          </p>
+        </article>
       </section>
 
-      <section id="contact">
-        <h1>Contact</h1>
-        <p>I will drop here a contact form, but it won't work ;)</p>
-        <form action="#">
+      <section id="more">
+        <article>
+          <h2>More</h2>
+          <img alt="Avatar" src="/img/avatar.png" />
           <p>
-            <label for="contact-form--email">Your email</label>
-            <input id="contact-form--email" name="email" />
+            Eventually, I will drop here links to other webs I maintain, like
+            <a
+              href="https://blog.lorenzogrv.tech"
+              target="_blank"
+              rel="noopener"
+            >my blog</a>,
+            <a
+              href="https://dojo.lorenzogrv.tech"
+              target="_blank"
+              rel="noopener"
+            >the dojo</a>,
+            <a
+              href="https://orgasmatron.band"
+              target="_blank"
+              rel="noopener"
+            >orgasmatron.band</a>,
+            and others.
           </p>
           <p>
-            <label for="contact-form--message">Message</label>
-            <textarea id="contact-form--message"></textarea>
+            I would also like to showcase here other projects as a kind of
+            porfolio, to communicate my knowledge and ability.
           </p>
-        </form>
+          <p>
+            While that isn't ready, you can visit the previous links.
+          </p>
+        </article>
       </section>
     </main>
 
     <footer>
-      &copy; lorenzogrv 2021
+      &copy; lorenzogrv <script>document.write(new Date().getFullYear())</script>
+      <a
+        href="https://creativecommons.org/licenses/by-nc-nd/3.0/es/"
+        target="_blank"
+        rel="noreferrer"
+      >CC BY NC ND 3.0</a>
     </footer>
+
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
