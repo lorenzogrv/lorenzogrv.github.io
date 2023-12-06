@@ -192,6 +192,14 @@ a {
   color: var(--color-shamrock);
 }
 
+/* scrollbar breaks the layout */
+main {
+  scrollbar-width: none;
+}
+main::-webkit-scrollbar {
+  display: none;
+}
+
 main > section {
 }
 
