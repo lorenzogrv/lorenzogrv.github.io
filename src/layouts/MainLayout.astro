@@ -9,14 +9,11 @@ import Link from '../components/Link.astro'
 
 const { id, title, bg } = Astro.props
 
-// maybe like  [ xs,  sm,  md,   lg,   xl]
-const widths = [360, 600, 900, 1200, 1536].map(w => w * 1.5)
 const backImg = await getImage({
   src: bg,
+  width: 1600,
   loading: 'lazy',
-  widths,
-  sizes: widths.map(w => `(max-width: ${w}px) ${w}px`).join(', '),
-  format: 'webp'
+  densities: [1, 2, 3]
 })
 ---
 <html lang="en">
@@ -35,7 +32,7 @@ const backImg = await getImage({
     <meta name="twitter:card" content="summary_large_image">
   
     <!--  Non esenciais, Pero recomendadas -->
-    <meta property="og:description" content="I'm a self-taught developer with some years of expertise">
+    <meta property="og:description" content="I'm a self-taught software developer with some years of expertise within the web platform">
     <meta property="og:site_name" content="lorenzogrv.tech">
     <meta name="twitter:image:alt" content="Lorenzo García Rivera">
 
@@ -55,17 +52,7 @@ const backImg = await getImage({
     </header>
 
     <main>
-      <section
-         id={id}
-	 style={[
-	   `--bg-image: url(${backImg.src})`,
-	   `--bg-image-xs: url(${backImg.srcSet.values[0].url})`,
-	   `--bg-image-sm: url(${backImg.srcSet.values[1].url})`,
-	   `--bg-image-md: url(${backImg.srcSet.values[2].url})`,
-	   `--bg-image-lg: url(${backImg.srcSet.values[3].url})`,
-	   `--bg-image-xl: url(${backImg.srcSet.values[4].url})`
-	   ].join(';')}
-      >
+      <section id={id}>
         <slot />
       </section>
     </main>
@@ -80,7 +67,15 @@ const backImg = await getImage({
     </footer>
   </body>
 </html>
-<style is:global>
+<style
+  is:global
+  define:vars={{
+    // 'bg-image': `${backImg.src}`,
+    'bg-image-sm': `url(${backImg.srcSet.values[0].url})`,
+    'bg-image-md': `url(${backImg.srcSet.values[1].url})`,
+    'bg-image-lg': `url(${backImg.srcSet.values[2].url})`
+  }}
+>
 /**
  * Backgrounds
  */
@@ -88,18 +83,19 @@ const backImg = await getImage({
 main > section {
   background-size: cover;
   background-position: center center;
-  background-image: var(--bg-image-xs, "");
-}
-@media (min-width: 600px) {
-  main > section { background-image: var(--bg-image-sm, ""); }
-}
-@media (min-width: 900px) {
-  main > section { background-image: var(--bg-image-md, ""); }
-}
-@media (min-width: 1200px) {
-  main > section { background-image: var(--bg-image-lg, ""); }
-}
-@media (min-width: 1536px) {
-  main > section { background-image: var(--bg-image-xl, ""); }
+  background-image: var(--bg-image-sm, "");
+
+  /* Chrome/Edge/Opera/Samsung, Safari will fallback to this as well */
+  background-image: -webkit-image-set(
+    var(--bg-image-sm) 1x,
+    var(--bg-image-md) 2x,
+    var(--bg-image-lg) 3x
+  );
+  /* Standard use */
+  background-image: image-set(
+    var(--bg-image-sm) 1x,
+    var(--bg-image-md) 2x,
+    var(--bg-image-lg) 3x
+  );
 }
 </style>
