@@ -1,9 +1,9 @@
 ---
 import Layout from './MainLayout.astro'
 
-const { id } = Astro.props
+const { id, bg } = Astro.props
 ---
-<Layout id={id}>
+<Layout id={id} bg={bg}>
   <article>
     <slot />
   </article>

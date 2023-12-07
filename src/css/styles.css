@@ -90,33 +90,6 @@ main > section {
 }
 
 /**
- * Backgrounds
- */
-
-:root {
-  /* https://picsum.photos/id/1019/5472/3648 */
-  --bg-home: url("/img/home.jpg");
-  /* https://picsum.photos/id/127/4032/2272 */
-  --bg-about: url("/img/about.jpg");
-  /* https://picsum.photos/id/120/4928/3264 */
-  --bg-more: url("/img/more.jpg");
-}
-main > section {
-  background-size: cover;
-  background-position: center center;
-  background-image: var(--bg-image, "");
-}
-#home {
-  --bg-image: var(--bg-home);
-}
-#about {
-  --bg-image: var(--bg-about);
-}
-#more {
-  --bg-image: var(--bg-more);
-}
-
-/**
  * Color & feel
  */
 

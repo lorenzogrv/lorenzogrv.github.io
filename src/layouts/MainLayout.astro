@@ -1,12 +1,23 @@
 ---
 // Astro frontmatter never runs on the browser!
 import { ViewTransitions } from 'astro:transitions'
+import { getImage } from 'astro:assets'
 
 import '../css/styles.css'
 
 import Link from '../components/Link.astro'
 
-const { id, title } = Astro.props
+const { id, title, bg } = Astro.props
+
+// maybe like  [ xs,  sm,  md,   lg,   xl]
+const widths = [360, 600, 900, 1200, 1536].map(w => w * 1.5)
+const backImg = await getImage({
+  src: bg,
+  loading: 'lazy',
+  widths,
+  sizes: widths.map(w => `(max-width: ${w}px) ${w}px`).join(', '),
+  format: 'webp'
+})
 ---
 <html lang="en">
   <head>
@@ -44,7 +55,17 @@ const { id, title } = Astro.props
     </header>
 
     <main>
-      <section id={id}>
+      <section
+         id={id}
+	 style={[
+	   `--bg-image: url(${backImg.src})`,
+	   `--bg-image-xs: url(${backImg.srcSet.values[0].url})`,
+	   `--bg-image-sm: url(${backImg.srcSet.values[1].url})`,
+	   `--bg-image-md: url(${backImg.srcSet.values[2].url})`,
+	   `--bg-image-lg: url(${backImg.srcSet.values[3].url})`,
+	   `--bg-image-xl: url(${backImg.srcSet.values[4].url})`
+	   ].join(';')}
+      >
         <slot />
       </section>
     </main>
@@ -59,3 +80,26 @@ const { id, title } = Astro.props
     </footer>
   </body>
 </html>
+<style is:global>
+/**
+ * Backgrounds
+ */
+
+main > section {
+  background-size: cover;
+  background-position: center center;
+  background-image: var(--bg-image-xs, "");
+}
+@media (min-width: 600px) {
+  main > section { background-image: var(--bg-image-sm, ""); }
+}
+@media (min-width: 900px) {
+  main > section { background-image: var(--bg-image-md, ""); }
+}
+@media (min-width: 1200px) {
+  main > section { background-image: var(--bg-image-lg, ""); }
+}
+@media (min-width: 1536px) {
+  main > section { background-image: var(--bg-image-xl, ""); }
+}
+</style>
