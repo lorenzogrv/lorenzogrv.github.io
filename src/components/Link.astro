@@ -1,0 +1,8 @@
+---
+const { href, prefetch } = Astro.props
+
+const classes = Astro.url.pathname === href ? 'selected' : ''
+---
+<a href={href} class={classes} data-astro-prefetch={prefetch}>
+  <slot />
+</a>

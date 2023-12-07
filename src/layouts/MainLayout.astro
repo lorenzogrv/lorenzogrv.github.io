@@ -1,0 +1,62 @@
+---
+// Astro frontmatter never runs on the browser!
+
+import { ViewTransitions } from 'astro:transitions'
+
+
+import Link from '../components/Link.astro'
+
+const { id, title } = Astro.props
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/img/Yin_yang.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale:1.0" />
+
+    <title>lorenzogrv.tech</title>
+
+    <!--  META Tags esenciales -->
+    <meta property="og:title" content="lorenzogrv.tech">
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="../img/avatar.png">
+    <meta property="og:url" content="https://lorenzogrv.tech">
+    <meta name="twitter:card" content="summary_large_image">
+  
+    <!--  Non esenciais, Pero recomendadas -->
+    <meta property="og:description" content="I'm a self-taught developer with some years of expertise">
+    <meta property="og:site_name" content="lorenzogrv.tech">
+    <meta name="twitter:image:alt" content="Lorenzo García Rivera">
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <ViewTransitions />
+  </head>
+  <body class={id} transition:animate="fade">
+    <header>
+      <h1>
+        lorenzogrv.tech
+        <small>Yet another web made from scratch</small>
+      </h1>
+      <nav>
+        <Link prefetch='viewport' href="/">Home</Link>
+        <Link prefetch='viewport' href="/about">About me</Link>
+        <Link prefetch='viewport' href="/more">More</Link>
+      </nav>
+    </header>
+
+    <main>
+      <section id={id}>
+        <slot />
+      </section>
+    </main>
+
+    <footer>
+      &copy; lorenzogrv <script>document.write(new Date().getFullYear())</script>
+      <a
+        href="https://creativecommons.org/licenses/by-nc-nd/3.0/es/"
+        target="_blank"
+        rel="noreferrer"
+      >CC BY NC ND 3.0</a>
+    </footer>
+  </body>
+</html>

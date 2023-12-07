@@ -1,0 +1,10 @@
+---
+import Layout from './MainLayout.astro'
+
+const { id } = Astro.props
+---
+<Layout id={id}>
+  <article>
+    <slot />
+  </article>
+</Layout>

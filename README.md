@@ -295,3 +295,54 @@ me sirve
 - [ ] Tech Skills (Molaría algo en plan ficha de personaje)
 - [ ] i18n
 - [ ] Tema capacitación
+
+> Estos los definí al final del Tramo II, ahora que arranco el III voy a revisar
+> prioridades. Marcaré lo que se haga, pero no me preocupará lo que no
+
+## Tramo III: Diciembre 2023
+
+Ya ha pasado un año desde el último *sprint*, y decidí que toca dar otro paso.
+Para centrarme un poco toca definir unos targets:
+
+- Aspecto
+  - Reemplazar el avatar por el nuevo que estoy usando. Quizá darle presencia en
+    la landing
+  - Remplazar el aspecto oscuro de la landing con algo más vivo. Quizá incluso
+    utilizar IA para generar un fondo.
+- Usabilidad
+  - En su momento quise jugar con el scroll horizontal, pero ahora lo veo más
+    un defecto de UX, especialmente para móvil. Le daré una vuelta, intentando
+    complicarme lo mínimo.
+- Contenido
+  - Como mínimo quiero que ya contenga un overview de mi experiencia laboral y
+    mi formación. Un plus sería un prototipo del porfolio
+  - Últimamente e investigado sobre [astro] y valoraré un respec del toolset.
+    A futuro quiero que el contenido crezca con facilidad, y como *side-effect*
+    lo probaría en la práctica.
+
+    Su funcionalidad de colecciones me parece interesante para implementar un
+    timeline sobre mi experiencia y mi formación, así como para mantener un SSOT
+    de proyectos para el portfolio y también el set de skills y herramientas
+
+[astro]: https://astro.build/
+
+### Respec a [astro]
+
+Definitivamente empezaré por aquí. El cambio de herramienta pasa por configurar
+mi querido vim en primer lugar
+
+- [Setup para vim](https://docs.astro.build/en/editor-setup/#other-code-editors)
+  - [sintax plugin](https://github.com/wuelnerdotexe/vim-astro)
+  - [LSP](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#astro)
+  - [TreeSitter](https://github.com/virchau13/tree-sitter-astro)
+
+Luego puedo seguir [la doc de setup manual](https://docs.astro.build/en/install/manual/)
+sin mucho problema.
+
+Adaptar el código no supone ningún problema dado que es vanilla puro. Una de
+las claves de astro es que su sintaxis me permitirá reescribir poco, será más
+bien un trabajo de split y organizar. Que el layout esté en vanilla CSS también
+facilitará esta tarea.
+
+Indirectamente consigo fixear la navegación por paths sin *trickery* del que
+suelo usar.

@@ -7,9 +7,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "astro dev",
+    "build": "astro build"
   },
   "repository": {
     "type": "git",
@@ -28,6 +27,6 @@
   },
   "homepage": "https://github.com/lorenzogrv/lorenzogrv.github.io#readme",
   "devDependencies": {
-    "vite": "^3.1.6"
+    "astro": "^4.0.3"
   }
 }
