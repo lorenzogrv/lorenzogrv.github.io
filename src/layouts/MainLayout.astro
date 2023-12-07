@@ -1,8 +1,8 @@
 ---
 // Astro frontmatter never runs on the browser!
-
 import { ViewTransitions } from 'astro:transitions'
 
+import '../css/styles.css'
 
 import Link from '../components/Link.astro'
 
@@ -28,7 +28,6 @@ const { id, title } = Astro.props
     <meta property="og:site_name" content="lorenzogrv.tech">
     <meta name="twitter:image:alt" content="Lorenzo García Rivera">
 
-    <link rel="stylesheet" href="../css/styles.css" />
     <ViewTransitions />
   </head>
   <body class={id} transition:animate="fade">
