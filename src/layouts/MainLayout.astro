@@ -21,6 +21,7 @@ const ogImg = await getImage({
   width: 1200,
   format: 'jpg'
 })
+const metaDesc= "I'm a self-taught software developer with some years of expertise within the web platform"
 ---
 <html lang="en">
   <head>
@@ -29,16 +30,16 @@ const ogImg = await getImage({
     <meta name="viewport" content="width=device-width, initial-scale:1.0" />
 
     <title>lorenzogrv.tech</title>
+    <meta name="description" content={metaDesc}>
 
-    <!--  META Tags esenciales -->
-    <meta property="og:title" content="lorenzogrv.tech">
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={ogImg.src}>
+    <!--  Esenciales -->
     <meta property="og:url" content="https://lorenzogrv.tech">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="lorenzogrv.tech">
+    <meta property="og:image" content={ogImg.src}>
+    <meta property="og:description" content={metaDesc}>
     <meta name="twitter:card" content="summary_large_image">
-  
-    <!--  Non esenciais, Pero recomendadas -->
-    <meta property="og:description" content="I'm a self-taught software developer with some years of expertise within the web platform">
+    <!--  Recomendadas -->
     <meta property="og:site_name" content="lorenzogrv.tech">
     <meta name="twitter:image:alt" content="Lorenzo García Rivera">
 
