@@ -32,16 +32,23 @@ const metaDesc= "I'm a self-taught software developer with some years of experti
     <title>lorenzogrv.tech</title>
     <meta name="description" content={metaDesc}>
 
-    <!--  Esenciales -->
-    <meta property="og:url" content="https://lorenzogrv.tech">
+    {/* Esenciales */}
+    <meta property="og:url" content="https://lorenzogrv.tech" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="lorenzogrv.tech">
-    <meta property="og:image" content={ogImg.src}>
-    <meta property="og:description" content={metaDesc}>
-    <meta name="twitter:card" content="summary_large_image">
-    <!--  Recomendadas -->
-    <meta property="og:site_name" content="lorenzogrv.tech">
-    <meta name="twitter:image:alt" content="Lorenzo García Rivera">
+    <meta property="og:title" content="lorenzogrv.tech" />
+    <meta property="og:image"
+      itemprop="image"
+      content={'https://lorenzogrv.tech' + ogImg.src}
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content={ogImg.width} />
+    <meta property="og:image:height" content={ogImg.height} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:updated_time" content={new Date().toISOString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {/* Recomendadas */}
+    <meta property="og:site_name" content="lorenzogrv.tech" />
+    <meta name="twitter:image:alt" content="Lorenzo García Rivera" />
 
     <ViewTransitions />
   </head>
@@ -62,6 +69,37 @@ const metaDesc= "I'm a self-taught software developer with some years of experti
       <section id={id}>
         <slot />
       </section>
+      <style
+        define:vars={{
+          // 'bg-image': `${backImg.src}`,
+          'bg-image-sm': `url(${backImg.srcSet.values[0].url})`,
+          'bg-image-md': `url(${backImg.srcSet.values[1].url})`,
+          'bg-image-lg': `url(${backImg.srcSet.values[2].url})`
+        }}
+      >
+      /**
+       * Backgrounds
+       */
+      
+      main > section {
+        background-size: cover;
+        background-position: center center;
+        background-image: var(--bg-image-sm, "");
+      
+        /* Chrome/Edge/Opera/Samsung, Safari will fallback to this as well */
+        background-image: -webkit-image-set(
+          var(--bg-image-sm) 1x,
+          var(--bg-image-md) 2x,
+          var(--bg-image-lg) 3x
+        );
+        /* Standard use */
+        background-image: image-set(
+          var(--bg-image-sm) 1x,
+          var(--bg-image-md) 2x,
+          var(--bg-image-lg) 3x
+        );
+      }
+      </style>
     </main>
 
     <footer>
@@ -74,34 +112,3 @@ const metaDesc= "I'm a self-taught software developer with some years of experti
     </footer>
   </body>
 </html>
-<style
-  define:vars={{
-    // 'bg-image': `${backImg.src}`,
-    'bg-image-sm': `url(${backImg.srcSet.values[0].url})`,
-    'bg-image-md': `url(${backImg.srcSet.values[1].url})`,
-    'bg-image-lg': `url(${backImg.srcSet.values[2].url})`
-  }}
->
-/**
- * Backgrounds
- */
-
-main > section {
-  background-size: cover;
-  background-position: center center;
-  background-image: var(--bg-image-sm, "");
-
-  /* Chrome/Edge/Opera/Samsung, Safari will fallback to this as well */
-  background-image: -webkit-image-set(
-    var(--bg-image-sm) 1x,
-    var(--bg-image-md) 2x,
-    var(--bg-image-lg) 3x
-  );
-  /* Standard use */
-  background-image: image-set(
-    var(--bg-image-sm) 1x,
-    var(--bg-image-md) 2x,
-    var(--bg-image-lg) 3x
-  );
-}
-</style>
