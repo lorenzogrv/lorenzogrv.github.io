@@ -4,6 +4,7 @@ import { ViewTransitions } from 'astro:transitions'
 import { getImage } from 'astro:assets'
 
 import '../css/styles.css'
+import ogImageSrc from '../img/me-alt.jpg'
 
 import Link from '../components/Link.astro'
 
@@ -14,6 +15,11 @@ const backImg = await getImage({
   width: 1600,
   loading: 'lazy',
   densities: [1, 2, 3]
+})
+const ogImg = await getImage({
+  src: ogImageSrc,
+  width: 1200,
+  format: 'jpg'
 })
 ---
 <html lang="en">
@@ -27,7 +33,7 @@ const backImg = await getImage({
     <!--  META Tags esenciales -->
     <meta property="og:title" content="lorenzogrv.tech">
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="../img/avatar.png">
+    <meta property="og:image" content={ogImg.src}>
     <meta property="og:url" content="https://lorenzogrv.tech">
     <meta name="twitter:card" content="summary_large_image">
   
