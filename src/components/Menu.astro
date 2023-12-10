@@ -1,0 +1,55 @@
+---
+import Link from '../components/Link.astro'
+const { class: className } = Astro.props
+---
+<nav class={className}>
+  <Link prefetch="viewport" href="/">Timeline</Link>
+  <Link prefetch="viewport" href="/about">About me</Link>
+  <Link prefetch="viewport" href="/more">More</Link>
+</nav>
+<style>
+  nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 100vw;
+  }
+  nav :global(a):first-child {
+    margin-left: .3rem;
+  }
+  nav :global(a) {
+    margin-right: .3rem;
+    padding: 1em;
+    width: 4em;
+    /* height: 4em; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .2rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    color: var(--color-cornsilk);
+    background-color: rgba(0, 0, 0, .4);
+    backdrop-filter: blur(5px);
+    transition:
+      color .2s ease,
+      filter .2s ease,
+      background-color .2s ease,
+      transform .1s ease;
+  }
+  nav :global(a):hover:not(.selected) {
+    color: floralwhite;
+    background-color: var(--color-shamrock-faded);
+    filter: drop-shadow(0 0 .5rem var(--color-bronze-faded));
+  }
+  nav :global(a):active:not(.selected) {
+    transform: scale(.9);
+  }
+  nav :global(a).selected {
+    color: var(--color-cornsilk-faded);
+    cursor: default;
+    background-color: var(--color-cafenoir);
+  }
+</style>

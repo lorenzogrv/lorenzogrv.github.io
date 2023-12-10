@@ -1,0 +1,103 @@
+/**
+ * Color & feel
+ */
+
+:root {
+  /* Autumm Palette, picked by me at https://coolors.co/ */
+  --color-shamrock: #519872ff;
+  --color-shamrock-faded: #5198727a;
+  --color-amethyst: #8b5fbfff;
+  --color-amethyst-faded: #8b5fbf7a;
+  --color-cornsilk: #fff8dcff;
+  --color-cornsilk-faded: #fff8dc7a;
+  --color-bronze: #d58936ff;
+  --color-bronze-faded: #d589367a;
+  --color-mid-gray: #504b43ff;
+  --color-mid-gray-faded: #504b4380;
+  --color-cafenoir: #4c2e05ff;
+  --color-cafenoir-faded: #4c2e0599;
+
+  /* picks from ai-artwork */
+  --color-skyblue: #4e99be;
+  --color-skyblue-faded: #4e99be7a;
+
+  --main-fg: var(--color-skyblue);
+  --main-fg-faded: var(--color-skyblue-faded);
+
+  --main-bg: var(--color-mid-gray);
+  --main-bg-overlay: rgba(10, 10, 7, .5);
+
+  --high-fg: var(--color-shamrock);
+  --high-fg-faded: var(--color-shamrock-faded);
+
+  --text-fg: var(--color-cornsilk);
+  --text-fg-faded: var(--color-cornsilk-faded);
+  --text-fg-dark: var(--color-cafenoir);
+  --text-fg-dark-faded: var(--color-cafenoir-faded);
+
+  color-scheme: dark; /* TODO light dark; */
+}
+
+body {
+  color: var(--text-fg);
+  background-color: var(--main-bg);
+}
+
+a {
+  color: var(--high-fg);
+  font-weight: 500;
+  text-decoration: inherit;
+}
+a:focus, a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  font-size: .7em;
+  color: var(--color-cornsilk-faded);
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(5px);
+}
+footer a {
+  color: var(--color-shamrock-faded);
+}
+footer, footer * {
+  transform: color 1s linear;
+}
+
+.home {
+  --main-bg-overlay: rgba(10, 10, 7, .8);
+}
+.about {
+  --main-bg-overlay: rgba(10, 10, 7, .7);
+}
+.more {
+  /* --main-fg: var(--color-cornsilk); */
+  --high-fg: var(--color-amethyst);
+  --high-fg: var(--color-shamrock);
+  --high-fg-faded: var(--color-shamrock-faded);
+  --text-fg-dark: var(--color-amethyst);
+  --text-fg-dark-faded: var(--color-amethyst-faded);
+}
+.about footer {
+  color: var(--color-mid-gray);
+}
+.about footer a {
+  color: var(--color-cafenoir-faded);
+}
+
+/* TODO
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+*/
+

@@ -1,0 +1,30 @@
+---
+import { getImage } from 'astro:assets'
+
+import ogImageSrc from '../img/me-alt.jpg'
+
+const ogImg = await getImage({
+  src: ogImageSrc,
+  width: 1200,
+  format: 'jpg'
+})
+const metaDesc= "I'm a self-taught software developer with some years of expertise within the web platform"
+---
+<meta name="description" content={metaDesc}>
+
+{/* Esenciales */}
+<meta property="og:url" content="https://lorenzogrv.tech" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="lorenzogrv.tech" />
+<meta property="og:image"
+  itemprop="image"
+  content={'https://lorenzogrv.tech' + ogImg.src}
+/>
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:description" content={metaDesc} />
+<meta property="og:updated_time" content={new Date().toISOString()} />
+<meta name="twitter:card" content="summary_large_image" />
+{/* Recomendadas */}
+<meta property="og:site_name" content="lorenzogrv.tech" />
+<meta name="twitter:image:alt" content="Lorenzo García Rivera" />
+

@@ -1,0 +1,99 @@
+---
+import Menu from '../components/Menu.astro'
+import Hamburger from '../components/Hamburger.astro'
+---
+<header>
+  <Hamburger />
+  <hgroup>
+    <h1>lorenzogrv.tech</h1>
+    <p>Yet another web made from scratch</p>
+  </hgroup>
+  <Menu class="nav-links" />
+</header>
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const header = document.querySelector('header')
+    const ham = document.querySelector('.hamburger')
+    const nav = document.querySelector('.nav-links')
+    const update = () => {
+      nav && header && nav.style.setProperty(
+        '--top', header.getBoundingClientRect().height + 'px'
+      )
+    }
+    update()
+    window.addEventListener('resize', update)
+    ham && nav && ham.addEventListener('click', () => {
+      ham.classList.toggle('selected')
+      nav.classList.toggle('expanded')
+    })
+  });
+</script>
+<style>
+  header {
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-size: .75rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding-left: 1em;
+    background-color: var(--main-bg-overlay);
+    backdrop-filter: blur(7px);
+  }
+  header :global(.hamburger) {
+    color: var(--high-fg-faded);
+    transition: color .3s ease;
+  }
+  header :global(.hamburger).selected,
+  header :global(.hamburger):focus,
+  header :global(.hamburger):hover {
+    color: var(--high-fg);
+  }
+  header hgroup {
+    flex: 1;
+    padding: .7em .5em;
+    line-height: 1.2;
+    color: var(--main-fg);
+    text-align: left;
+  }
+  header hgroup > * {
+    background-clip: text;
+    margin: 0;
+  }
+  header hgroup p {
+    margin-top: .5em;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: var(--text-fg-faded);
+    /* transform: color .5s linear; */
+  }
+  header :global(.nav-links) {
+    position: absolute;
+    top: var(--top);
+    left: 0;
+    right: 0;
+    padding: .5em 0;
+    transform: scaleY(0);
+    transform-origin: 0 0;
+    transition: transform .15s ease;
+  }
+  header :global(.nav-links).expanded {
+    transform: scaleY(1);
+  }
+
+  @media screen and (min-width: 768px) {
+    header :global(.hamburger) {
+      display: none;
+    }
+    header :global(.nav-links) {
+      flex-basis: min-content;
+      position: static;
+      transform: none;
+    }
+    header hgroup {
+      text-align: center;
+    }
+  }
+</style>

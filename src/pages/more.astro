@@ -1,14 +1,12 @@
 ---
-import { Image } from 'astro:assets'
-
+import Avatar from '../components/Avatar.astro'
 import Layout from '../layouts/SimpleLayout.astro'
 
 import bg from '../img/more.jpg'
-import avatar from '../img/avatar.png'
 ---
 <Layout id='more' bg={bg}>
   <h2>More</h2>
-  <Image src={avatar} alt="Avatar" />
+  <Avatar />
   <p>
     Eventually, I will drop here links to other webs I maintain, like
     <a

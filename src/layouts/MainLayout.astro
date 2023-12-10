@@ -3,12 +3,13 @@
 import { ViewTransitions } from 'astro:transitions'
 import { getImage } from 'astro:assets'
 
+import MetaTags from '../components/MetaTags.astro'
+import Header from '../components/Header.astro'
+
+import '../css/palette.css'
 import '../css/styles.css'
-import ogImageSrc from '../img/me-alt.jpg'
 
-import Link from '../components/Link.astro'
-
-const { id, title, bg } = Astro.props
+const { id, title = 'lorenzogrv.tech', bg } = Astro.props
 
 const backImg = await getImage({
   src: bg,
@@ -16,12 +17,6 @@ const backImg = await getImage({
   loading: 'lazy',
   densities: [1, 2, 3]
 })
-const ogImg = await getImage({
-  src: ogImageSrc,
-  width: 1200,
-  format: 'jpg'
-})
-const metaDesc= "I'm a self-taught software developer with some years of expertise within the web platform"
 ---
 <html lang="en">
   <head>
@@ -29,81 +24,21 @@ const metaDesc= "I'm a self-taught software developer with some years of experti
     <link rel="icon" type="image/svg+xml" href="/img/Yin_yang.svg" />
     <meta name="viewport" content="width=device-width, initial-scale:1.0" />
 
-    <title>lorenzogrv.tech</title>
-    <meta name="description" content={metaDesc}>
-
-    {/* Esenciales */}
-    <meta property="og:url" content="https://lorenzogrv.tech" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="lorenzogrv.tech" />
-    <meta property="og:image"
-      itemprop="image"
-      content={'https://lorenzogrv.tech' + ogImg.src}
-    />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content={ogImg.width} />
-    <meta property="og:image:height" content={ogImg.height} />
-    <meta property="og:description" content={metaDesc} />
-    <meta property="og:updated_time" content={new Date().toISOString()} />
-    <meta name="twitter:card" content="summary_large_image" />
-    {/* Recomendadas */}
-    <meta property="og:site_name" content="lorenzogrv.tech" />
-    <meta name="twitter:image:alt" content="Lorenzo García Rivera" />
-
+    <title>{title}</title>
+    <MetaTags />
     <ViewTransitions />
   </head>
-  <body class={id} transition:animate="fade">
-    <header>
-      <h1>
-        lorenzogrv.tech
-        <small>Yet another web made from scratch</small>
-      </h1>
-      <nav>
-        <Link prefetch='viewport' href="/">Home</Link>
-        <Link prefetch='viewport' href="/about">About me</Link>
-        <Link prefetch='viewport' href="/more">More</Link>
-      </nav>
-    </header>
+  <body class={id}>
+    <Header navigation:persist />
 
-    <main>
+    <main transition:animate="fade">
       <section id={id}>
         <slot />
       </section>
-      <style
-        define:vars={{
-          // 'bg-image': `${backImg.src}`,
-          'bg-image-sm': `url(${backImg.srcSet.values[0].url})`,
-          'bg-image-md': `url(${backImg.srcSet.values[1].url})`,
-          'bg-image-lg': `url(${backImg.srcSet.values[2].url})`
-        }}
-      >
-      /**
-       * Backgrounds
-       */
-      
-      main > section {
-        background-size: cover;
-        background-position: center center;
-        background-image: var(--bg-image-sm, "");
-      
-        /* Chrome/Edge/Opera/Samsung, Safari will fallback to this as well */
-        background-image: -webkit-image-set(
-          var(--bg-image-sm) 1x,
-          var(--bg-image-md) 2x,
-          var(--bg-image-lg) 3x
-        );
-        /* Standard use */
-        background-image: image-set(
-          var(--bg-image-sm) 1x,
-          var(--bg-image-md) 2x,
-          var(--bg-image-lg) 3x
-        );
-      }
-      </style>
     </main>
 
     <footer>
-      &copy; lorenzogrv <script>document.write(new Date().getFullYear())</script>
+      &copy; lorenzogrv {new Date().getFullYear().toString()}
       <a
         href="https://creativecommons.org/licenses/by-nc-nd/3.0/es/"
         target="_blank"
@@ -112,3 +47,76 @@ const metaDesc= "I'm a self-taught software developer with some years of experti
     </footer>
   </body>
 </html>
+<style is:global>
+  html, body { margin: 0; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+  }
+
+  header {
+    z-index: 1;
+  }
+
+  main {
+    flex-grow: 1;
+    box-sizing: border-box;
+    width: 90vw;
+    max-width: 40em;
+    margin: 1em auto;
+    padding: 1em 1.2em;
+    padding-bottom: 3em;
+    background-color: var(--main-bg-overlay);
+    backdrop-filter: blur(7px);
+    border-radius: .5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  main > section {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+  }
+
+  footer {
+    padding-top: .7em;
+    padding-bottom: 1em;
+    bottom: 0;
+  }
+</style>
+<style
+  is:global
+  define:vars={{
+    // 'bg-image': `${backImg.src}`,
+    'bg-image-sm': `url(${backImg.srcSet.values[0].url})`,
+    'bg-image-md': `url(${backImg.srcSet.values[1].url})`,
+    'bg-image-lg': `url(${backImg.srcSet.values[2].url})`
+  }}
+>
+/**
+ * Backgrounds
+ */
+body {
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-image: var(--bg-image-sm, "");
+
+  /* Chrome/Edge/Opera/Samsung, Safari will fallback to this as well */
+  background-image: -webkit-image-set(
+    var(--bg-image-sm) 1x,
+    var(--bg-image-md) 2x,
+    var(--bg-image-lg) 3x
+  );
+  /* Standard use */
+  background-image: image-set(
+    var(--bg-image-sm) 1x,
+    var(--bg-image-md) 2x,
+    var(--bg-image-lg) 3x
+  );
+}
+</style>

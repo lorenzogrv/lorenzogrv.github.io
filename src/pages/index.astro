@@ -1,10 +1,13 @@
 ---
+import Avatar from '../components/Avatar.astro'
 import Layout from '../layouts/SimpleLayout.astro'
+// import Timeline from '../components/Timeline.astro'
 
 import bg from '../img/home.jpg'
 ---
 <Layout id='home' bg={bg}>
   <h2>Hi world! I'm Lorenzo</h2>
+  <Avatar />
   <p>
     This is a plain site I made for a bootcamp time ago.
   </p>
@@ -19,4 +22,22 @@ import bg from '../img/home.jpg'
       rel="noopener"
     >work-in-progress</a>.
   </p>
+  {/* <Timeline
+    events={[
+      { title: 'Prueba 1', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
+      { title: 'Prueba 3', start: new Date(2023, 11), end: new Date(2023, 11) }
+    ]}
+    /> */}
 </Layout>
