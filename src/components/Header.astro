@@ -34,10 +34,11 @@ import Hamburger from '../components/Hamburger.astro'
     left: 0;
     right: 0;
     top: 0;
-    font-size: .75rem;
+    font-size: .8rem;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    justify-content: center;
     padding-left: 1em;
     background-color: var(--main-bg-overlay);
     backdrop-filter: blur(7px);
@@ -55,8 +56,9 @@ import Hamburger from '../components/Hamburger.astro'
     flex: 1;
     padding: .7em .5em;
     line-height: 1.2;
-    color: var(--main-fg);
+    color: var(--main-fg-dark);
     text-align: left;
+    font-size: .85em;
   }
   header hgroup > * {
     background-clip: text;
@@ -66,10 +68,11 @@ import Hamburger from '../components/Hamburger.astro'
     margin-top: .5em;
     font-size: 1.1em;
     font-weight: 400;
-    color: var(--text-fg-faded);
+    color: var(--main-fg);
     /* transform: color .5s linear; */
   }
   header :global(.nav-links) {
+    flex-flow: row wrap;
     position: absolute;
     top: var(--top);
     left: 0;
@@ -88,6 +91,7 @@ import Hamburger from '../components/Hamburger.astro'
       display: none;
     }
     header :global(.nav-links) {
+      flex-flow: row nowrap;
       flex-basis: min-content;
       position: static;
       transform: none;

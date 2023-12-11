@@ -1,36 +1,34 @@
 ---
-import Avatar from '../components/Avatar.astro'
+import Social from '../components/SocialCard.astro'
 import Layout from '../layouts/SimpleLayout.astro'
 
 import bg from '../img/more.jpg'
 ---
 <Layout id='more' bg={bg}>
   <h2>More</h2>
-  <Avatar />
   <p>
-    Eventually, I will drop here links to other webs I maintain, like
-    <a
+    Sometimes I write (in Galician) at <a
       href="https://blog.lorenzogrv.tech"
       target="_blank"
       rel="noopener"
-    >my blog</a>,
-    <a
-      href="https://dojo.lorenzogrv.tech"
-      target="_blank"
-      rel="noopener"
-    >the dojo</a>,
-    <a
-      href="https://orgasmatron.band"
-      target="_blank"
-      rel="noopener"
-    >orgasmatron.band</a>,
-    and others.
+    >my blog</a>, feel free to take a visit. It contains mostly thoughts, but
+    may also help at introducing me
   </p>
   <p>
-    I would also like to showcase here other projects as a kind of
-    porfolio, to communicate my knowledge and ability.
+    One day this web will contain a project portfolio. While that isn't ready,
+    you can visit my profiles at GitLab and GitHub to see code written by me
   </p>
+  <Social variant="gitlab" username='lorenzogrv' description="GL main account" />
+  <Social variant="gitlab" username='lorenzogrv1' description="GL alt account" />
   <p>
-    While that isn't ready, you can visit the previous links.
+    Nowadays I spend most of the time at GitLab, so my GitHub account has few
+    activity
   </p>
+  <Social variant="github" username='lorenzogrv' description="GH account"/>
 </Layout>
+<style>
+  p { flex-basis: 100% !important; }
+  :global(figure.social-card) {
+    flex-basis: auto;
+  }
+</style>

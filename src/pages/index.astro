@@ -1,43 +1,37 @@
 ---
-import Avatar from '../components/Avatar.astro'
+/*
+// A futuro, podría tener sentido para mejorar las animaciones
+import { getCollection } from 'astro:content'
+const sections = await getCollection('sections')
+console.log(sections)
+console.log(await sections[0].render())
+// Otra opción también puede ser authoring directo en md o mdx
+*/
+
 import Layout from '../layouts/SimpleLayout.astro'
-// import Timeline from '../components/Timeline.astro'
+import Avatar from '../components/Avatar.astro'
 
 import bg from '../img/home.jpg'
 ---
 <Layout id='home' bg={bg}>
   <h2>Hi world! I'm Lorenzo</h2>
+  <p>
+    I'm a self-taught software developer with
+    <a href="/cv" target="_self">years of expertise</a>,
+    highly focused within the web platform
+  </p>
   <Avatar />
   <p>
-    This is a plain site I made for a bootcamp time ago.
+    I belive good software has the potential to improve society in every sense,
+    from people's daily life to the humanity great challenges
   </p>
   <p>
-    I'm updating it to be my personal brand web.
-  </p>
-  <p>
+    This plain site is my personal brand web.
     It's still a
     <a
       href="https://github.com/lorenzogrv/lorenzogrv.github.io"
       target="_blank"
       rel="noopener"
-    >work-in-progress</a>.
+    >work-in-progress</a>
   </p>
-  {/* <Timeline
-    events={[
-      { title: 'Prueba 1', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 2', start: new Date(2023, 11), end: new Date(2023, 11) },
-      { title: 'Prueba 3', start: new Date(2023, 11), end: new Date(2023, 11) }
-    ]}
-    /> */}
 </Layout>

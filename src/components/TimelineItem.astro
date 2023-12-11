@@ -1,0 +1,76 @@
+---
+import { type CollectionEntry } from 'astro:content'
+import MilestoneIcon from './MilestoneIcon.astro'
+import PlaceIcon from '../components/PlaceIcon.astro'
+
+export type Event = CollectionEntry<'milestones'>['data']
+
+export interface Props {
+  event: Event
+  format: (start: Date, end?: Date) => string
+}
+
+const { event, format } = Astro.props
+---
+<article>
+  <MilestoneIcon kind={event.kind} />
+  <hgroup>
+    <h1>{event.title}</h1>
+    <p>
+    {event.organization}<span>,</span>
+    {format(event.start, event.end)}
+    {event.duration && <span class="duration">{event.duration}</span>}
+    </p>
+    <p class="place">
+      <PlaceIcon />
+      <span>{event.place}</span>
+    </p>
+  </hgroup>
+  {event.stack && (
+    <p class="stack">
+    {event.stack.map(tag => <span>{tag}</span>)}
+    </p>
+  )}
+</article>
+<style>
+  article hgroup {
+  }
+  article hgroup h1 {
+    margin: 0;
+    text-wrap: balance;
+    font-weight: bold;
+    color: var(--text-fg);
+  }
+  article hgroup p {
+    margin: 0;
+    margin-top: .7em;
+    color: var(--text-fg);
+  }
+  article hgroup p span {
+    color: var(--text-fg-faded);
+  }
+  article hgroup p span.duration:before { content: '('; }
+  article hgroup p span.duration:after { content: ')'; }
+  article p.place {
+    font-size: .8em;
+    display: flex;
+    align-items: center;
+  }
+  article p.place span {
+    margin-left: .3em;
+  }
+  article p.stack {
+    margin: .5em 0;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  article p.stack span {
+    margin-top: .5em;
+    margin-right: .7em;
+    color: var(--main-fg);
+  }
+  article p.stack span:before {
+    content: '#';
+    color: var(--high-fg-faded);
+  }
+</style>

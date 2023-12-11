@@ -1,0 +1,54 @@
+---
+import SocialIcon from './SocialIcon.astro'
+
+const {
+  variant,
+  username,
+  description
+} = Astro.props
+
+const url = (() => {
+  switch (variant) {
+    case 'gitlab': return `https://gitlab.com/${username}`
+    case 'github': return `https://github.com/${username}`
+  }
+})()
+---
+<figure class="social-card">
+  <SocialIcon variant={variant} />
+  <legend>
+    <a href={url} target="_blank" rel="noopener">{username}</a>
+    {description && <span>{description}</span>}
+  </legend>
+</figure>
+<style>
+  figure {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: .5em auto;
+    border: 1px solid var(--main-fg-dark-faded);
+    border-radius: .4em;
+    padding: .3em;
+  }
+  figure :global(.icon) {
+    flex-shrink: 0;
+    color: var(--main-fg-faded)
+  }
+  figure legend {
+    display: flex;
+    flex-flow: column;
+    min-width: 8em;
+    padding-left: .5em;
+    align-items: flex-start;
+  }
+  figure a {
+    font-family: var(--main-font);
+    font-weight: 600;
+    font-size: 1em;
+  }
+  figure span {
+    color: var(--text-fg-faded);
+    font-size: .8em;
+  }
+</style>

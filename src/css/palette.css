@@ -18,11 +18,15 @@
   --color-cafenoir-faded: #4c2e0599;
 
   /* picks from ai-artwork */
+  --color-lime: #f0e564;
+  --color-lime-faded: #f0e56480;
   --color-skyblue: #4e99be;
   --color-skyblue-faded: #4e99be7a;
 
-  --main-fg: var(--color-skyblue);
-  --main-fg-faded: var(--color-skyblue-faded);
+  --main-fg: var(--color-lime);
+  --main-fg-faded: var(--color-lime-faded);
+  --main-fg-dark: var(--color-bronze);
+  --main-fg-dark-faded: var(--color-bronze-faded);
 
   --main-bg: var(--color-mid-gray);
   --main-bg-overlay: rgba(10, 10, 7, .5);
@@ -42,7 +46,6 @@ body {
   color: var(--text-fg);
   background-color: var(--main-bg);
 }
-
 a {
   color: var(--high-fg);
   font-weight: 500;
@@ -52,11 +55,23 @@ a:focus, a:hover {
   text-decoration: underline;
 }
 
+main h1, main h2 {
+  color: var(--main-fg);
+  position: relative;
+}
+main h1:after,
+main h2:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  border-bottom: 1px solid var(--main-fg-dark);
+}
+
+
 footer {
   font-size: .7em;
   color: var(--color-cornsilk-faded);
-  background-color: rgba(0, 0, 0, 0);
-  backdrop-filter: blur(5px);
 }
 footer a {
   color: var(--color-shamrock-faded);
@@ -65,7 +80,7 @@ footer, footer * {
   transform: color 1s linear;
 }
 
-.home {
+.home, .timeline {
   --main-bg-overlay: rgba(10, 10, 7, .8);
 }
 .about {

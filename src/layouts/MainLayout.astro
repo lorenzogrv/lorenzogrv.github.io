@@ -1,10 +1,10 @@
 ---
-// Astro frontmatter never runs on the browser!
 import { ViewTransitions } from 'astro:transitions'
 import { getImage } from 'astro:assets'
 
 import MetaTags from '../components/MetaTags.astro'
 import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
 
 import '../css/palette.css'
 import '../css/styles.css'
@@ -26,32 +26,29 @@ const backImg = await getImage({
 
     <title>{title}</title>
     <MetaTags />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+
     <ViewTransitions />
   </head>
   <body class={id}>
     <Header navigation:persist />
 
     <main transition:animate="fade">
-      <section id={id}>
-        <slot />
-      </section>
+      <slot />
     </main>
 
-    <footer>
-      &copy; lorenzogrv {new Date().getFullYear().toString()}
-      <a
-        href="https://creativecommons.org/licenses/by-nc-nd/3.0/es/"
-        target="_blank"
-        rel="noreferrer"
-      >CC BY NC ND 3.0</a>
-    </footer>
+    <Footer navigation:persist />
   </body>
 </html>
 <style is:global>
   html, body { margin: 0; }
 
   body {
-    min-height: 100vh;
+    min-height: 101vh; /* force scrollbar to appear */
     display: flex;
     flex-flow: column;
   }
@@ -72,24 +69,19 @@ const backImg = await getImage({
     backdrop-filter: blur(7px);
     border-radius: .5rem;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column wrap;
+    flex-basis: 100%;
     justify-content: center;
     align-items: center;
   }
-  main > section {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-  }
-
   footer {
     padding-top: .7em;
     padding-bottom: 1em;
     bottom: 0;
+    text-align: center;
   }
 </style>
 <style
-  is:global
   define:vars={{
     // 'bg-image': `${backImg.src}`,
     'bg-image-sm': `url(${backImg.srcSet.values[0].url})`,

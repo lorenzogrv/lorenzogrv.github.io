@@ -1,0 +1,49 @@
+---
+import github from '../img/svg/github-mark-white.svg?raw'
+import gitlab from '../img/svg/gitlab-logo-500.svg?raw'
+
+export interface Props {
+  variant: 'github' | 'gitlab'
+}
+
+const { variant } = Astro.props
+
+const svg = (() => {
+  switch (variant) {
+    case 'github': return github
+    case 'gitlab': return gitlab
+    default: throw new Error(`Unknown variant: ${variant}`)
+  }
+})()
+---
+<span class="icon">
+  <Fragment set:html={svg} />
+</span>
+<style>
+  .icon {
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 16px;
+    min-height: 16px;
+    --size: 48px;
+    min-width: var(--size);
+    min-height: var(--size);
+    max-width: var(--size);
+    max-height: var(--size);
+    padding: 5px;
+    border-radius: 50%;
+    background-color: rbg(0, 0, 0, .5);
+    background-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-fg-faded);
+  }
+  .icon :global(svg) {
+  }
+  .icon :global(svg path:not([fill=none])) {
+    max-width: 100%;
+    max-height: 100%;
+    fill: currentColor;
+  }
+</style>

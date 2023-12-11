@@ -1,0 +1,39 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+
+type Milestone = CollectionEntry<'milestones'>
+
+import Layout from '../layouts/MainLayout.astro'
+import TimelineComp, { type Event } from '../components/Timeline.astro'
+
+import bg from '../img/home.jpg'
+
+const works = await getCollection('milestones', ({ data }) => {
+  return data.kind === 'work'
+})
+
+const education = await getCollection('milestones', ({ data }) => {
+  return data.kind === 'study-official'
+})
+const training = await getCollection('milestones', ({ data }) => {
+  return data.kind === 'study-complement'
+})
+
+const sort = (a: Event, b: Event) => {
+  if (a.end && !b.end) return 1
+  if (b.end && !a.end) return -1
+
+  let diff = b.start.valueOf() - a.start.valueOf()
+  if (diff === 0) {
+    diff = (b.end?.valueOf() || Date.now()) - (a.end?.valueOf() || 0)
+  }
+  return diff
+}
+
+const getEvents = (list: Milestone[]) => list.map(vo => vo.data).sort(sort)
+---
+<Layout id='timeline' bg={bg}>
+  <TimelineComp title='Work experience' events={getEvents(works)} />
+  <TimelineComp title='Education' events={getEvents(education)} />
+  <TimelineComp title='Further Training' events={getEvents(training)} />
+</Layout>

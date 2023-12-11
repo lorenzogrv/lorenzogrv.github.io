@@ -4,11 +4,42 @@ import Layout from './MainLayout.astro'
 const { id, bg } = Astro.props
 ---
 <Layout id={id} bg={bg}>
-  <article>
-    <slot />
-  </article>
+  <section id={id}>
+    <article>
+      <slot />
+    </article>
+  </section>
 </Layout>
 <style>
+  section {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+  }
+  article {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  article > :global(*) {
+    flex-basis: 100%;
+    text-align: center;
+    text-wrap: balance;
+    line-height: 1.2
+  }
+  article > :global(p:first-of-type) {
+    font-size: 1.2em;
+  }
+  @media screen and (min-width: 768px) {
+    article > :global(p:not(:first-of-type)) {
+      flex-basis: 49%;
+    }
+    article > :global(p:last-of-type) {
+      text-align: center;
+      flex-basis: 100%;
+    }
+  }
   /* article :global(h2) {
     color: transparent;
     background: inherit;

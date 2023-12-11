@@ -1,0 +1,20 @@
+---
+import svg from '../img/svg/location_on_24px.svg?raw'
+---
+<span class="icon">
+  <Fragment set:html={svg} />
+</span>
+<style>
+  span.icon {
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-fg-faded);
+  }
+  span.icon :global(svg path:not([fill=none])) {
+    fill: currentColor;
+  }
+</style>
