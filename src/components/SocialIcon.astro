@@ -1,9 +1,10 @@
 ---
 import github from '../img/svg/github-mark-white.svg?raw'
 import gitlab from '../img/svg/gitlab-logo-500.svg?raw'
+import npm from '../img/svg/npm-edit.svg?raw'
 
 export interface Props {
-  variant: 'github' | 'gitlab'
+  variant: 'github' | 'gitlab' | 'npm'
 }
 
 const { variant } = Astro.props
@@ -12,6 +13,7 @@ const svg = (() => {
   switch (variant) {
     case 'github': return github
     case 'gitlab': return gitlab
+    case 'npm': return npm
     default: throw new Error(`Unknown variant: ${variant}`)
   }
 })()

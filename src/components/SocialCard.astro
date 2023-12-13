@@ -11,6 +11,7 @@ const url = (() => {
   switch (variant) {
     case 'gitlab': return `https://gitlab.com/${username}`
     case 'github': return `https://github.com/${username}`
+    case 'npm': return `https://www.npmjs.com/~${username}`
   }
 })()
 ---
